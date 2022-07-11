@@ -142,6 +142,8 @@ class ParentWindow(Frame):
     def Decimal(self, item):
         global expression
         global answer
+        if expression == results:
+            expression = ''
         numlist = expression.split('+')
         numlist1 = expression.split('-')
         numlist2 = expression.split('/')
