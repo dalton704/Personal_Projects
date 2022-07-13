@@ -103,10 +103,11 @@ class ParentWindow(Frame):
             expression = ''
         if expression.__contains__('+'):
             expression = expression + str(item)
-        elif expression.startswith('-'):
-            expression = str(item)
         elif expression.__contains__('-'):
-            expression = expression + str(item)
+            if expression.startswith('-'):
+                expression = expression + str(item)
+            else:   
+                expression = expression + str(item)
         elif expression.__contains__('/'):
             expression = expression + str(item)
         elif expression.__contains__('*'):
@@ -125,6 +126,8 @@ class ParentWindow(Frame):
     def Operator(self, item):
         global expression
         global answer
+        if expression.startswith('-'):
+            expression = expression + str(item)
         if expression[-1:] == '+':
             expression = expression[:-1] + str(item)
         elif expression[-1:] == '-':
